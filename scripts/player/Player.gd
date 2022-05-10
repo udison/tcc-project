@@ -35,4 +35,3 @@ func rotate_to_mouse():
 		
 func flip_horizontal():
 	scale.x = -1
-	
