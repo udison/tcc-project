@@ -5,6 +5,7 @@ class_name Weapon
 @export var mag_size: int = 30
 @export var fire_rate: float = 100.0 # Bullets per minute
 @export var reload_time: float = 2.0 # In seconds
+@export var bullet_scene: PackedScene
 
 var ammo: int = mag_size
 var can_shoot: bool = true
@@ -40,7 +41,12 @@ func fire():
 	if !can_shoot or ammo <= 0:
 		return
 	
-	print('BANG')
+	var bullet_instance = bullet_scene.instantiate()
+	bullet_instance.global_position = muzzle.global_position
+	bullet_instance.global_rotation = muzzle.global_rotation
+	bullet_instance.shot_by_player = true
+	get_tree().current_scene.add_child(bullet_instance)
+	
 	can_shoot = false
 		
 	if ammo > 0:

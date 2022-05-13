@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dou0msrn8yfrk"]
+[gd_scene load_steps=5 format=3 uid="uid://daosa1stp7suf"]
 
-[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_4jtyd"]
+[ext_resource type="Script" path="res://scripts/characters/Player.gd" id="1_dj402"]
 [ext_resource type="Texture2D" uid="uid://xqtpewd10cdn" path="res://icon.png" id="2_22fre"]
 [ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="3_x4aqg"]
 
@@ -8,7 +8,8 @@
 size = Vector2(64, 64)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource( "1_4jtyd" )
+collision_mask = 6
+script = ExtResource( "1_dj402" )
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource( "2_22fre" )
