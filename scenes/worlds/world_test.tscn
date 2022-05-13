@@ -6,7 +6,8 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( "1_ejp24" )]
-position = Vector2(487, 276)
+position = Vector2(160, 90)
+SPEED = 300.0
 
 [node name="Enemy" parent="." instance=ExtResource( "2_n2jf5" )]
-position = Vector2(673, 276)
+position = Vector2(346, 90)

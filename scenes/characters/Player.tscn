@@ -1,21 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://daosa1stp7suf"]
 
 [ext_resource type="Script" path="res://scripts/characters/Player.gd" id="1_dj402"]
-[ext_resource type="Texture2D" uid="uid://xqtpewd10cdn" path="res://icon.png" id="2_22fre"]
+[ext_resource type="Texture2D" uid="uid://b0e1u1uwu4oao" path="res://sprites/characters/rat.png" id="2_xdpt1"]
 [ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="3_x4aqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tg7u"]
-size = Vector2(64, 64)
+size = Vector2(10, 16)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource( "1_dj402" )
+SPEED = 2.0
+speed = 100.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource( "2_22fre" )
+texture = ExtResource( "2_xdpt1" )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource( "RectangleShape2D_5tg7u" )
 
 [node name="Weapon" parent="." instance=ExtResource( "3_x4aqg" )]
-position = Vector2(24, 8)
+position = Vector2(4, 3)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true

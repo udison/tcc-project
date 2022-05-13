@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwenxq7brxuot"]
 
-[ext_resource type="Texture2D" uid="uid://xqtpewd10cdn" path="res://icon.png" id="1_ehuey"]
 [ext_resource type="Script" path="res://scripts/combat/Bullet.gd" id="1_nqvo2"]
+[ext_resource type="Texture2D" uid="uid://t2m6hudkxdwn" path="res://sprites/combat/bullet.png" id="2_4tlrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prrmr"]
-radius = 32.0156
+radius = 3.0
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( "1_nqvo2" )
+VELOCITY = 150.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource( "1_ehuey" )
+texture = ExtResource( "2_4tlrh" )
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 0

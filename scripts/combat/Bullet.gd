@@ -6,10 +6,12 @@ class_name Bullet
 
 @onready var area: Area2D = $Area
 @onready var lifespan_timer: Timer = $LifespanTimer
+@onready var sprite: Sprite2D = $Sprite
 
 var shot_by_player: bool = false
 
 func _ready():
+	sprite.global_rotation = 0
 	var collision_mask: int = 0
 
 	if shot_by_player:
@@ -20,7 +22,7 @@ func _ready():
 	area.set_collision_mask(collision_mask)
 
 func _physics_process(delta):
-	position += Vector2.RIGHT.rotated(global_rotation) * VELOCITY
+	position += Vector2.RIGHT.rotated(global_rotation) * VELOCITY * delta
 
 func _on_body_entered(body):
 	if body is Entity:

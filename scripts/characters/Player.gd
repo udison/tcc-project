@@ -1,15 +1,14 @@
-extends CharacterBody2D
+extends Entity
 class_name Player
-
-const SPEED: float = 300.0
 
 var motion: Vector2 = Vector2.ZERO
 var looking_right: bool = true
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	input_handler()
 	move()
 	rotate_to_mouse()
+	print(speed)
 	
 func input_handler():
 	motion.x = Input.get_axis('left', 'right')
@@ -18,10 +17,10 @@ func input_handler():
 	
 func move():
 	if motion != Vector2.ZERO:
-		velocity = motion * SPEED
+		velocity = motion * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
 
