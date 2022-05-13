@@ -5,23 +5,27 @@ class_name Bullet
 @export var VELOCITY: float = 5.0
 
 @onready var area: Area2D = $Area
+@onready var lifespan_timer: Timer = $LifespanTimer
 
 var shot_by_player: bool = false
 
 func _ready():
-	var new_collision_mask: int = 0
+	var collision_mask: int = 0
+
 	if shot_by_player:
-		new_collision_mask = PhysicsLayers.WORLD | PhysicsLayers.ENEMIES
+		collision_mask = PhysicsLayers.WORLD | PhysicsLayers.ENEMIES
 	else:
-		new_collision_mask = PhysicsLayers.WORLD | PhysicsLayers.PLAYER
-		
-	print(1 | 5)
-	area.set_collision_mask(new_collision_mask)
+		collision_mask = PhysicsLayers.WORLD | PhysicsLayers.PLAYER
+
+	area.set_collision_mask(collision_mask)
 
 func _physics_process(delta):
-	position += Vector2.RIGHT * VELOCITY
+	position += Vector2.RIGHT.rotated(global_rotation) * VELOCITY
 
 func _on_body_entered(body):
 	if body is Entity:
 		body.take_damage(DAMAGE)
-		queue_free()
+		destroy()
+		
+func destroy():
+	queue_free()
