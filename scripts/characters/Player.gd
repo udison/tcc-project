@@ -4,6 +4,8 @@ class_name Player
 var motion: Vector2 = Vector2.ZERO
 var looking_right: bool = true
 
+@onready var anim_player = $AnimationPlayer
+
 func _physics_process(delta: float):
 	input_handler()
 	move()
@@ -18,9 +20,11 @@ func input_handler():
 func move():
 	if motion != Vector2.ZERO:
 		velocity = motion * speed
+		anim_player.play('Walk')
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
+		anim_player.play('Idle')
 
 	move_and_slide()
 
