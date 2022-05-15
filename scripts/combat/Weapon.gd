@@ -13,6 +13,7 @@ var can_shoot: bool = true
 @onready var muzzle: Node2D = $Muzzle
 @onready var fire_timer: Timer = $FireTimer
 @onready var reload_timer: Timer = $ReloadTimer
+@onready var held_by_player: bool = get_parent().get_parent() is Player
 
 enum FireModes {
 	SINGLE,
@@ -25,10 +26,13 @@ func _ready():
 
 func _physics_process(delta):
 	rotate_to_mouse()
-	input_handler()
+	
+	if held_by_player:
+		input_handler()
 	
 func rotate_to_mouse():
-	look_at(get_global_mouse_position())
+	# look_at(get_global_mouse_position())
+	pass
 
 func input_handler():
 	if Input.is_action_pressed('fire'):
@@ -44,7 +48,7 @@ func fire():
 	var bullet_instance = bullet_scene.instantiate()
 	bullet_instance.global_position = muzzle.global_position
 	bullet_instance.global_rotation = muzzle.global_rotation
-	bullet_instance.shot_by_player = true
+	bullet_instance.shot_by_player = held_by_player
 	get_tree().current_scene.add_child(bullet_instance)
 	
 	can_shoot = false

@@ -1,16 +1,13 @@
 extends Entity
 class_name Player
 
-var motion: Vector2 = Vector2.ZERO
-var looking_right: bool = true
-
 @onready var anim_player = $AnimationPlayer
+@onready var hand = $Hand
 
 func _physics_process(delta: float):
 	input_handler()
 	move()
 	rotate_to_mouse()
-	print(speed)
 	
 func input_handler():
 	motion.x = Input.get_axis('left', 'right')
@@ -32,9 +29,8 @@ func rotate_to_mouse():
 	var mouse_x = get_global_mouse_position().x
 	var mouse_distance_to_player = mouse_x - global_position.x
 	
+	hand.look_at(get_global_mouse_position())
+	
 	if mouse_distance_to_player > 0 and not looking_right or mouse_distance_to_player < 0 and looking_right:
 		looking_right = !looking_right
 		flip_horizontal()
-		
-func flip_horizontal():
-	scale.x = -1
