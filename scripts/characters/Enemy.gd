@@ -1,7 +1,7 @@
 extends Entity
 class_name Enemy
 
-@export var attack_cooldown: float = 0.5
+@export var attack_cooldown: float = 1.5
 @export var stop_distance: float = 100.0
 @export var min_idle_time: float = 2.0
 @export var max_idle_time: float = 6.0
@@ -16,6 +16,7 @@ class_name Enemy
 @onready var player = get_tree().current_scene.get_node('Player')
 
 var is_chasing_player: bool = false
+var can_attack: bool = true
 
 func _ready():
 	walk_to_random_location()
@@ -26,6 +27,16 @@ func _physics_process(delta):
 	
 	if is_chasing_player:
 		look_to_player()
+		attack()
+
+
+func attack():
+	if not can_attack:
+		return
+	
+	hand.get_node('Weapon').fire()
+	can_attack = false
+	attack_cooldown_timer.start(attack_cooldown)
 
 
 func move():
@@ -98,3 +109,7 @@ func stop_chase_player():
 	is_chasing_player = false
 	hand.global_rotation = 0
 
+
+
+func _on_attack_cooldown_timer_timeout():
+	can_attack = true
