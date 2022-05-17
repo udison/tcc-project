@@ -107,8 +107,7 @@ func chase_player():
 
 func stop_chase_player():
 	is_chasing_player = false
-	hand.global_rotation = 0
-
+	hand.global_rotation = 0 if looking_right else deg2rad(180)
 
 
 func _on_attack_cooldown_timer_timeout():
