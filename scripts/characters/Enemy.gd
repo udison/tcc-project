@@ -19,6 +19,7 @@ var is_chasing_player: bool = false
 var can_attack: bool = true
 
 func _ready():
+	super._ready()
 	walk_to_random_location()
 
 
