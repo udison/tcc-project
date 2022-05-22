@@ -49,6 +49,7 @@ func fire():
 	bullet_instance.global_position = muzzle.global_position
 	bullet_instance.global_rotation = muzzle.global_rotation
 	bullet_instance.shot_by_player = held_by_player
+	bullet_instance.damage = damage
 	get_tree().current_scene.add_child(bullet_instance)
 	
 	can_shoot = false

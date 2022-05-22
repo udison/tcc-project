@@ -1,7 +1,7 @@
 extends Node2D
 class_name Bullet
 
-@export var DAMAGE: float = 25.0
+@export var damage: float = 25.0
 @export var VELOCITY: float = 5.0
 
 @onready var area: Area2D = $Area
@@ -26,7 +26,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body is Entity:
-		body.take_damage(DAMAGE)
+		body.take_damage(damage)
 		destroy()
 		
 func destroy():
