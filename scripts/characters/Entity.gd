@@ -8,6 +8,7 @@ signal damage_took(amount)
 @export var speed: float = 3.0
 
 @onready var health_bar: HealthBar = $HealthBar
+@onready var sprite: Sprite2D = $Sprite
 
 var motion: Vector2 = Vector2.ZERO
 var looking_right: bool = true

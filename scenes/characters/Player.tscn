@@ -7,6 +7,33 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tg7u"]
 size = Vector2(10, 16)
 
+[sub_resource type="Animation" id="Animation_pric4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
 [sub_resource type="Animation" id="Animation_yo517"]
 resource_name = "Idle"
 loop_mode = 1
@@ -64,33 +91,6 @@ tracks/1/keys = {
 "values": [Vector2(4, 4), Vector2(5, 3), Vector2(4, 4), Vector2(4, 3), Vector2(4, 4), Vector2(5, 3), Vector2(4, 4), Vector2(4, 3)]
 }
 
-[sub_resource type="Animation" id="Animation_pric4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, 4)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12ey6"]
 _data = {
 "Idle": SubResource( "Animation_yo517" ),
@@ -126,4 +126,4 @@ libraries = {
 position = Vector2(4, 4)
 
 [node name="Weapon" parent="Hand" instance=ExtResource( "3_x4aqg" )]
-damage = 75.0
+damage = 13.0

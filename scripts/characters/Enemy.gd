@@ -10,6 +10,7 @@ class_name Enemy
 
 @onready var patrol_timer: Timer = $PatrolTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
+@onready var blink_effect_timer: Timer = $BlinkEffectTimer
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var hand: Node2D = $Hand
 
@@ -113,3 +114,18 @@ func stop_chase_player():
 
 func _on_attack_cooldown_timer_timeout():
 	can_attack = true
+
+
+func take_damage(amount: float):
+	super.take_damage(amount)
+	
+	damage_blink_animation()
+
+
+func damage_blink_animation():
+	sprite.modulate = Color(100, 100, 100)
+	blink_effect_timer.start(.1)
+
+
+func reset_modulate():
+	sprite.modulate = Color.WHITE
