@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bewtshcckwty0"]
+
+[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_h3ly6"]
+[ext_resource type="Texture2D" uid="uid://10xcw2k4fbv6" path="res://sprites/combat/awp.png" id="2_0ngw2"]
+
+[node name="AWP" instance=ExtResource( "1_h3ly6" )]
+damage = 125.0
+mag_size = 10
+fire_rate = 60.0
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(6, -4)
+texture = ExtResource( "2_0ngw2" )
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(22, -5)

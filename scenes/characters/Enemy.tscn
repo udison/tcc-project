@@ -2,39 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/characters/Enemy.gd" id="1_agmy0"]
 [ext_resource type="Texture2D" uid="uid://b0e1u1uwu4oao" path="res://sprites/characters/rat.png" id="2_jdww1"]
-[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="3_yptxn"]
+[ext_resource type="PackedScene" uid="uid://dd5nlfj1bv6ev" path="res://scenes/weapons/Revolver.tscn" id="3_e16ff"]
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="4_6gn5h"]
 [ext_resource type="Texture2D" uid="uid://cayo3x625ouxp" path="res://sprites/ui/enemies_health_bar.png" id="4_kgwwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu03s"]
 size = Vector2(14, 18)
-
-[sub_resource type="Animation" id="Animation_pric4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, 4)]
-}
 
 [sub_resource type="Animation" id="Animation_yo517"]
 resource_name = "Idle"
@@ -93,6 +66,33 @@ tracks/1/keys = {
 "values": [Vector2(4, 4), Vector2(5, 3), Vector2(4, 4), Vector2(4, 3), Vector2(4, 4), Vector2(5, 3), Vector2(4, 4), Vector2(4, 3)]
 }
 
+[sub_resource type="Animation" id="Animation_pric4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12ey6"]
 _data = {
 "Idle": SubResource( "Animation_yo517" ),
@@ -105,7 +105,7 @@ radius = 185.011
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource( "1_agmy0" )
 speed = 25.0
 stop_distance = 75.0
@@ -128,7 +128,7 @@ libraries = {
 [node name="Hand" type="Node2D" parent="."]
 position = Vector2(4, 4)
 
-[node name="Weapon" parent="Hand" instance=ExtResource( "3_yptxn" )]
+[node name="Revolver" parent="Hand" instance=ExtResource( "3_e16ff" )]
 
 [node name="DetectionArea" type="Area2D" parent="."]
 visible = false

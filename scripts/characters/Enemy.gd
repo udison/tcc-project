@@ -8,11 +8,11 @@ class_name Enemy
 @export var min_walk_time: float = 1.5
 @export var max_walk_time: float = 3.0
 
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var hand: Node2D = $Hand
 @onready var patrol_timer: Timer = $PatrolTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var blink_effect_timer: Timer = $BlinkEffectTimer
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var hand: Node2D = $Hand
 
 @onready var player = get_tree().current_scene.get_node('Player')
 
@@ -36,7 +36,7 @@ func attack():
 	if not can_attack:
 		return
 	
-	hand.get_node('Weapon').fire()
+	hand.get_child(0).fire()
 	can_attack = false
 	attack_cooldown_timer.start(attack_cooldown)
 
