@@ -21,4 +21,4 @@ position = Vector2(14, -4)
 [node name="ReloadTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="FireTimer" to="." method="enable_shoot"]
-[connection signal="timeout" from="ReloadTimer" to="." method="enable_shoot"]
+[connection signal="timeout" from="ReloadTimer" to="." method="reload_finished"]

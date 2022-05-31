@@ -4,16 +4,31 @@ class_name Player
 @onready var anim_player = $AnimationPlayer
 @onready var hand = $Hand
 
+func _ready():
+	setup_listeners()
+
+
 func _physics_process(delta: float):
-	input_handler()
 	move()
 	rotate_to_mouse()
+
+
+func setup_listeners():
+	var input_handler = get_tree().get_root().get_node('InputHandler')
 	
+	input_handler.connect('move', listen_movement)
+
+
+func listen_movement(_motion: Vector2):
+	motion = _motion
+
+
 func input_handler():
 	motion.x = Input.get_axis('left', 'right')
 	motion.y = Input.get_axis('up', 'down')
 	motion = motion.normalized()
-	
+
+
 func move():
 	if motion != Vector2.ZERO:
 		velocity = motion * speed
@@ -24,6 +39,7 @@ func move():
 		anim_player.play('Idle')
 
 	move_and_slide()
+
 
 func rotate_to_mouse():
 	var mouse_x = get_global_mouse_position().x

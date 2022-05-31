@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://daosa1stp7suf"]
+[gd_scene load_steps=10 format=3 uid="uid://daosa1stp7suf"]
 
 [ext_resource type="Script" path="res://scripts/characters/Player.gd" id="1_dj402"]
 [ext_resource type="Texture2D" uid="uid://b0e1u1uwu4oao" path="res://sprites/characters/rat.png" id="2_xdpt1"]
 [ext_resource type="PackedScene" uid="uid://bewtshcckwty0" path="res://scenes/weapons/AWP.tscn" id="3_bqa1w"]
+[ext_resource type="Script" path="res://scripts/gameplay/Inventory.gd" id="4_oqiey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tg7u"]
 size = Vector2(10, 16)
@@ -126,3 +127,6 @@ libraries = {
 position = Vector2(4, 4)
 
 [node name="AWP" parent="Hand" instance=ExtResource( "3_bqa1w" )]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource( "4_oqiey" )

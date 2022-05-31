@@ -7,7 +7,7 @@ class_name Weapon
 @export var reload_time: float = 2.0 # In seconds
 @export var bullet_scene: PackedScene
 
-var ammo: int = mag_size
+var ammo: int = 0
 var can_shoot: bool = true
 
 @onready var muzzle: Node2D = $Muzzle
@@ -23,24 +23,19 @@ enum FireModes {
 func _ready():
 	fire_timer.wait_time = 60 / fire_rate
 	reload_timer.wait_time = reload_time
-
-func _physics_process(delta):
-	rotate_to_mouse()
+	ammo = mag_size
 	
 	if held_by_player:
-		input_handler()
-	
-func rotate_to_mouse():
-	# look_at(get_global_mouse_position())
-	pass
+		setup_listeners()
 
-func input_handler():
-	if Input.is_action_pressed('fire'):
-		fire()
+
+func setup_listeners():
+	var input_handler = get_tree().get_root().get_node('InputHandler')
 	
-	elif Input.is_action_pressed('reload'):
-		reload()
-		
+	input_handler.connect('attack', fire)
+	input_handler.connect('reload', reload)
+
+
 func fire():
 	if !can_shoot or ammo <= 0:
 		return
@@ -51,6 +46,7 @@ func fire():
 	bullet_instance.shot_by_player = held_by_player
 	bullet_instance.damage = damage
 	get_tree().current_scene.add_child(bullet_instance)
+	ammo -= 1
 	
 	can_shoot = false
 		
@@ -61,8 +57,13 @@ func fire():
 	
 func reload():
 	print('reloading!')
-	ammo = mag_size
-	reload_timer.start()
+	reload_timer.start(reload_time)
+
 
 func enable_shoot():
 	can_shoot = true
+
+
+func reload_finished():
+	enable_shoot()
+	ammo = mag_size

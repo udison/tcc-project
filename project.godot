@@ -29,6 +29,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/gameplay/HealthBar.gd"
 }, {
+"base": "Node",
+"class": &"Inventory",
+"language": &"GDScript",
+"path": "res://scripts/gameplay/Inventory.gd"
+}, {
 "base": "Entity",
 "class": &"Player",
 "language": &"GDScript",
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "Enemy": "",
 "Entity": "",
 "HealthBar": "",
+"Inventory": "",
 "Player": "",
 "Weapon": ""
 }
@@ -57,6 +63,7 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 [autoload]
 
+InputHandler="*res://scripts/gameplay/InputHandler.gd"
 PhysicsLayers="*res://scripts/gameplay/PhysicsLayers.gd"
 
 [display]
