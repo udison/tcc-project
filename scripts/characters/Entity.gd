@@ -9,6 +9,7 @@ signal damage_took(amount)
 
 @onready var health_bar: HealthBar = $HealthBar
 @onready var sprite: Sprite2D = $Sprite
+@onready var blink_effect_timer: Timer = $BlinkEffectTimer
 
 var motion: Vector2 = Vector2.ZERO
 var looking_right: bool = true
@@ -23,6 +24,7 @@ func take_damage(amount: float):
 	print(str(name) + ' taking ' + str(amount) + ' damage')
 	health -= amount
 	damage_took.emit(health)
+	damage_blink_animation()
 	
 	if health <= 0:
 		die()
@@ -38,3 +40,12 @@ func flip_horizontal():
 	
 	if health_bar != null:
 		health_bar.scale.x = -health_bar.scale.x
+
+
+func damage_blink_animation():
+	sprite.modulate = Color(100, 100, 100)
+	blink_effect_timer.start(.1)
+
+
+func reset_modulate():
+	sprite.modulate = Color.WHITE

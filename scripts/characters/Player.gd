@@ -6,6 +6,8 @@ class_name Player
 
 func _ready():
 	setup_listeners()
+	sprite = $Sprite
+	blink_effect_timer = $BlinkEffectTimer
 
 
 func _physics_process(delta: float):

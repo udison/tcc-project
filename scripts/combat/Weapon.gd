@@ -1,6 +1,12 @@
 extends Node2D
 class_name Weapon
 
+enum WeaponTypes {
+	PRIMARY,
+	SECONDARY
+}
+
+@export_enum(Primary, Secondary) var type: int = 1
 @export var damage: float = 25.0
 @export var mag_size: int = 30
 @export var fire_rate: float = 100.0 # Bullets per minute
@@ -37,6 +43,7 @@ func setup_listeners():
 
 
 func fire():
+	print(can_shoot)
 	if !can_shoot or ammo <= 0:
 		return
 	
@@ -56,7 +63,12 @@ func fire():
 		reload()
 	
 func reload():
+	if ammo == mag_size:
+		return
+	
 	print('reloading!')
+	
+	can_shoot = false
 	reload_timer.start(reload_time)
 
 

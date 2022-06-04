@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_en1ln"]
 
 [node name="Revolver" instance=ExtResource( "1_en1ln" )]
+mag_size = 6

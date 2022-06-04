@@ -3,6 +3,7 @@ extends Node
 signal move(direction: Vector2)
 signal attack()
 signal reload()
+signal equip(slot: int)
 
 var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
@@ -10,6 +11,7 @@ var last_direction: Vector2 = Vector2.ZERO
 func _process(delta):
 	handle_movement_input()
 	handle_mouse_input()
+	handle_weapon_selection()
 
 
 func handle_movement_input():
@@ -30,3 +32,14 @@ func handle_mouse_input():
 		reload.emit()
 	elif Input.is_action_pressed('fire'):
 		attack.emit()
+
+
+func handle_weapon_selection():
+	var slot: int = 0
+	
+	if Input.is_action_just_released('primary'): slot = 1
+	if Input.is_action_just_released('secondary'): slot = 2
+	if Input.is_action_just_released('tertiary'): slot = 3
+	
+	if slot != 0:
+		equip.emit(slot)
