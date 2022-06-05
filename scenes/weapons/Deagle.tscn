@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkbpca4rjw37c"]
+
+[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_mhlr3"]
+[ext_resource type="Texture2D" uid="uid://ssr1iqmcus5a" path="res://sprites/combat/deagle.png" id="2_guvac"]
+
+[node name="Deagle" instance=ExtResource( "1_mhlr3" )]
+damage = 45.0
+mag_size = 7
+fire_rate = 170.0
+reload_time = 1.8
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(4, -3)
+texture = ExtResource( "2_guvac" )
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(13, -4)

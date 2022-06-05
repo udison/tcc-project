@@ -28,7 +28,6 @@ enum FireModes {
 
 func _ready():
 	fire_timer.wait_time = 60 / fire_rate
-	reload_timer.wait_time = reload_time
 	ammo = mag_size
 	
 	if held_by_player:
@@ -43,7 +42,6 @@ func setup_listeners():
 
 
 func fire():
-	print(can_shoot)
 	if !can_shoot or ammo <= 0:
 		return
 	
@@ -72,10 +70,11 @@ func reload():
 	reload_timer.start(reload_time)
 
 
-func enable_shoot():
-	can_shoot = true
-
-
 func reload_finished():
+	print('reload finished!')
 	enable_shoot()
 	ammo = mag_size
+
+
+func enable_shoot():
+	can_shoot = true

@@ -17,8 +17,10 @@ texture = ExtResource( "3_ipm1y" )
 position = Vector2(14, -4)
 
 [node name="FireTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="FireTimer" to="." method="enable_shoot"]
 [connection signal="timeout" from="ReloadTimer" to="." method="reload_finished"]

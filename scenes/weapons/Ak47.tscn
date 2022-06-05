@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4nykbkyxn8dw"]
+
+[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_5w06s"]
+[ext_resource type="Texture2D" uid="uid://cwtaxufifsbkw" path="res://sprites/combat/ak47.png" id="2_p1kg1"]
+
+[node name="AK47" instance=ExtResource( "1_5w06s" )]
+type = 0
+damage = 33.0
+fire_rate = 220.0
+reload_time = 2.5
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(7, -2)
+texture = ExtResource( "2_p1kg1" )
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(22, -3)

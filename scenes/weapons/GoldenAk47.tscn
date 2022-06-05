@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://defjnl0kc7wfc"]
+
+[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_5w06s"]
+[ext_resource type="Texture2D" uid="uid://v5xfo4ofpdhm" path="res://sprites/combat/golden_ak47.png" id="2_bbt7x"]
+
+[node name="Golden AK47" instance=ExtResource( "1_5w06s" )]
+type = 0
+damage = 44.0
+mag_size = 35
+fire_rate = 230.0
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(7, -2)
+texture = ExtResource( "2_bbt7x" )
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(22, -3)
