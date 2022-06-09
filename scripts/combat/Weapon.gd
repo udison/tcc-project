@@ -2,11 +2,13 @@ extends Node2D
 class_name Weapon
 
 enum WeaponTypes {
-	PRIMARY,
-	SECONDARY
+	RIFLE,
+	PISTOL,
+	SHOTGUN,
+	SNIPER
 }
 
-@export_enum(Primary, Secondary) var type: int = 1
+@export_enum(Rifle, Pistol, Shotgun, Sniper) var type: int = 1
 @export var damage: float = 25.0
 @export var mag_size: int = 30
 @export var fire_rate: float = 100.0 # Bullets per minute

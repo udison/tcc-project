@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/gameplay/Hand.gd" id="3_icmvg"]
 [ext_resource type="Script" path="res://scripts/gameplay/Inventory.gd" id="4_oqiey"]
 [ext_resource type="PackedScene" uid="uid://c4nykbkyxn8dw" path="res://scenes/weapons/Ak47.tscn" id="5_87kh1"]
-[ext_resource type="PackedScene" uid="uid://defjnl0kc7wfc" path="res://scenes/weapons/GoldenAk47.tscn" id="6_vep34"]
+[ext_resource type="PackedScene" uid="uid://bpticr1ih4cvh" path="res://scenes/weapons/DoubleBarreledShotgun.tscn" id="6_k4a72"]
 [ext_resource type="PackedScene" uid="uid://bkbpca4rjw37c" path="res://scenes/weapons/Deagle.tscn" id="7_5hin6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tg7u"]
@@ -105,6 +105,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource( "1_dj402" )
+health = 1e+07
 speed = 100.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -119,6 +120,7 @@ shape = SubResource( "RectangleShape2D_5tg7u" )
 
 [node name="MainCamera" type="Camera2D" parent="."]
 current = true
+zoom = Vector2(3, 3)
 smoothing_enabled = true
 smoothing_speed = 3.0
 
@@ -137,7 +139,7 @@ script = ExtResource( "3_icmvg" )
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource( "4_oqiey" )
 first_slot = ExtResource( "5_87kh1" )
-second_slot = ExtResource( "6_vep34" )
+second_slot = ExtResource( "6_k4a72" )
 third_slot = ExtResource( "7_5hin6" )
 
 [connection signal="timeout" from="BlinkEffectTimer" to="." method="reset_modulate"]

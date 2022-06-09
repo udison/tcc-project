@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpticr1ih4cvh"]
+
+[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_0gagr"]
+[ext_resource type="Texture2D" uid="uid://57omtpcqvkml" path="res://sprites/combat/double_barreled_shotgun.png" id="2_3ufij"]
+
+[node name="Double Barreled Shotgun" instance=ExtResource( "1_0gagr" )]
+type = 2
+damage = 20.0
+mag_size = 2
+fire_rate = 400.0
+bullets_shot_once = 5
+spread_radius = 30.0
+spread_walking_multiplier = 1.9
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( "2_3ufij" )
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(21, -4)
