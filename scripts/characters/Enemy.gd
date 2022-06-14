@@ -57,6 +57,9 @@ func move():
 	if ((motion.x > 0 or distance_to_player > 0 and is_chasing_player) and not looking_right) or ((motion.x < 0 or distance_to_player < 0 and is_chasing_player) and looking_right):
 		looking_right = !looking_right
 		flip_horizontal()
+		
+		if health_bar != null:
+			health_bar.scale.x = -health_bar.scale.x
 	
 	move_and_slide()
 

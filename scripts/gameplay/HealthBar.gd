@@ -7,7 +7,6 @@ class_name HealthBar
 var entity: Entity
 
 
-
 func init(_entity):
 	entity = _entity
 	

@@ -35,11 +35,11 @@ func die():
 	queue_free()
 
 
-func flip_horizontal():
+func flip_horizontal(things_to_unflip: Array = []):
 	scale.x = -1
 	
-	if health_bar != null:
-		health_bar.scale.x = -health_bar.scale.x
+	for thing in things_to_unflip:
+		thing.scale.x = -thing.scale.x
 
 
 func damage_blink_animation():

@@ -1,10 +1,16 @@
 extends Entity
 class_name Player
 
-@onready var anim_player = $AnimationPlayer
-@onready var hand = $Hand
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var hand: Node2D = $Hand
+@onready var main_camera: Camera2D = $MainCamera
 
 func _ready():
+	health_bar = get_tree().current_scene.get_node('HUD').get_node('HealthBar')
+	
+	if health_bar != null:
+		health_bar.init(self)
+	
 	setup_listeners()
 	sprite = $Sprite
 	blink_effect_timer = $BlinkEffectTimer
@@ -39,7 +45,7 @@ func move():
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
 		anim_player.play('Idle')
-
+	
 	move_and_slide()
 
 
@@ -51,4 +57,4 @@ func rotate_to_mouse():
 	
 	if mouse_distance_to_player > 0 and not looking_right or mouse_distance_to_player < 0 and looking_right:
 		looking_right = !looking_right
-		flip_horizontal()
+		flip_horizontal([main_camera])
