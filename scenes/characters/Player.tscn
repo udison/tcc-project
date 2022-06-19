@@ -1,42 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://daosa1stp7suf"]
+[gd_scene load_steps=14 format=3 uid="uid://daosa1stp7suf"]
 
 [ext_resource type="Script" path="res://scripts/characters/Player.gd" id="1_dj402"]
 [ext_resource type="Texture2D" uid="uid://d3xgiq6yfjsq" path="res://sprites/characters/player.png" id="2_b20ia"]
+[ext_resource type="Texture2D" uid="uid://bct7px6njgyla" path="res://sprites/effects/shadow.png" id="2_h5xli"]
 [ext_resource type="Script" path="res://scripts/gameplay/Hand.gd" id="3_icmvg"]
 [ext_resource type="Script" path="res://scripts/gameplay/Inventory.gd" id="4_oqiey"]
 [ext_resource type="PackedScene" uid="uid://defjnl0kc7wfc" path="res://scenes/weapons/GoldenAk47.tscn" id="5_r8d7o"]
 [ext_resource type="PackedScene" uid="uid://bpticr1ih4cvh" path="res://scenes/weapons/DoubleBarreledShotgun.tscn" id="6_k4a72"]
-[ext_resource type="PackedScene" uid="uid://bkbpca4rjw37c" path="res://scenes/weapons/Deagle.tscn" id="7_5hin6"]
+[ext_resource type="PackedScene" uid="uid://dd5nlfj1bv6ev" path="res://scenes/weapons/Revolver.tscn" id="7_21k1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tg7u"]
 size = Vector2(8, 18)
-
-[sub_resource type="Animation" id="Animation_pric4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, 4)]
-}
 
 [sub_resource type="Animation" id="Animation_yo517"]
 resource_name = "Idle"
@@ -96,6 +70,33 @@ tracks/1/keys = {
 "values": [Vector2(4, 3), Vector2(5, 4), Vector2(4, 3), Vector2(3, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_pric4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12ey6"]
 _data = {
 "Idle": SubResource( "Animation_yo517" ),
@@ -114,11 +115,15 @@ zoom = Vector2(3, 3)
 smoothing_enabled = true
 smoothing_speed = 3.0
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource( "2_h5xli" )
+
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource( "2_b20ia" )
 hframes = 4
 vframes = 2
-frame = 6
+frame = 4
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -140,6 +145,6 @@ script = ExtResource( "3_icmvg" )
 script = ExtResource( "4_oqiey" )
 first_slot = ExtResource( "5_r8d7o" )
 second_slot = ExtResource( "6_k4a72" )
-third_slot = ExtResource( "7_5hin6" )
+third_slot = ExtResource( "7_21k1y" )
 
 [connection signal="timeout" from="BlinkEffectTimer" to="." method="reset_modulate"]

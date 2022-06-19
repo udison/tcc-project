@@ -1,13 +1,71 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsibds7lmi1em"]
+[gd_scene load_steps=13 format=3 uid="uid://bsibds7lmi1em"]
 
 [ext_resource type="Script" path="res://scripts/characters/Enemy.gd" id="1_agmy0"]
-[ext_resource type="Texture2D" uid="uid://b0e1u1uwu4oao" path="res://sprites/characters/rat.png" id="2_jdww1"]
+[ext_resource type="Texture2D" uid="uid://bct7px6njgyla" path="res://sprites/effects/shadow.png" id="2_0cb3y"]
 [ext_resource type="PackedScene" uid="uid://dd5nlfj1bv6ev" path="res://scenes/weapons/Revolver.tscn" id="3_e16ff"]
+[ext_resource type="Texture2D" uid="uid://kng20p0wxsnb" path="res://sprites/characters/enemy01.png" id="3_rukbh"]
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="4_6gn5h"]
 [ext_resource type="Texture2D" uid="uid://cayo3x625ouxp" path="res://sprites/ui/enemies_health_bar.png" id="4_kgwwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu03s"]
 size = Vector2(14, 18)
+
+[sub_resource type="Animation" id="Animation_yo517"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_x5s6s"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4, 3), Vector2(5, 2), Vector2(4, 3), Vector2(3, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_pric4"]
 length = 0.001
@@ -36,63 +94,6 @@ tracks/1/keys = {
 "values": [Vector2(4, 4)]
 }
 
-[sub_resource type="Animation" id="Animation_yo517"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, 4)]
-}
-
-[sub_resource type="Animation" id="Animation_x5s6s"]
-resource_name = "Walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14, 15]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(4, 4), Vector2(5, 3), Vector2(4, 4), Vector2(4, 3), Vector2(4, 4), Vector2(5, 3), Vector2(4, 4), Vector2(4, 3)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12ey6"]
 _data = {
 "Idle": SubResource( "Animation_yo517" ),
@@ -110,11 +111,15 @@ script = ExtResource( "1_agmy0" )
 speed = 25.0
 stop_distance = 75.0
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource( "2_0cb3y" )
+
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource( "2_jdww1" )
-hframes = 8
+texture = ExtResource( "3_rukbh" )
+hframes = 4
 vframes = 2
-frame = 9
+frame = 6
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 visible = false
@@ -127,7 +132,7 @@ libraries = {
 }
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2(5, 3)
+position = Vector2(4, 3)
 
 [node name="Revolver" parent="Hand" instance=ExtResource( "3_e16ff" )]
 spread_walking_multiplier = 1.3
@@ -147,9 +152,9 @@ shape = SubResource( "CircleShape2D_vvo8k" )
 [node name="HealthBar" type="Control" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = -14.0
+offset_top = -16.0
 offset_right = 12.0
-offset_bottom = -13.0
+offset_bottom = -15.0
 grow_horizontal = 2
 script = ExtResource( "4_6gn5h" )
 
