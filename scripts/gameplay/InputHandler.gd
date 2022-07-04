@@ -39,7 +39,6 @@ func handle_weapon_selection():
 	
 	if Input.is_action_just_released('primary'): slot = 1
 	if Input.is_action_just_released('secondary'): slot = 2
-	if Input.is_action_just_released('tertiary'): slot = 3
 	
 	if slot != 0:
 		equip.emit(slot)

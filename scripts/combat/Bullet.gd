@@ -25,8 +25,12 @@ func _physics_process(delta):
 	position += Vector2.RIGHT.rotated(global_rotation) * VELOCITY * delta
 
 func _on_body_entered(body):
+	print(body)
 	if body is Entity:
 		body.take_damage(damage)
+		destroy()
+		
+	elif body is TileMap:
 		destroy()
 		
 func destroy():

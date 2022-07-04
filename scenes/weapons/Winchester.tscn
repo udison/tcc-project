@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://drh5us0uygoub"]
+
+[ext_resource type="PackedScene" uid="uid://ctsx0pok1eoi0" path="res://scenes/weapons/Weapon.tscn" id="1_r5hxs"]
+[ext_resource type="Texture2D" uid="uid://5raqro4opuv5" path="res://sprites/combat/winchester.png" id="2_h27t7"]
+
+[node name="Winchester" instance=ExtResource( "1_r5hxs" )]
+type = 0
+damage = 36.0
+mag_size = 16
+reload_time = 5.0
+spread_radius = 10.0
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(3, -2)
+texture = ExtResource( "2_h27t7" )
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(19, -3)

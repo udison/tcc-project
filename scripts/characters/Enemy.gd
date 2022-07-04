@@ -7,6 +7,7 @@ class_name Enemy
 @export var max_idle_time: float = 6.0
 @export var min_walk_time: float = 1.5
 @export var max_walk_time: float = 3.0
+@export var weapon_pool: Array[PackedScene] = []
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var hand: Node2D = $Hand
@@ -19,6 +20,7 @@ var is_chasing_player: bool = false
 var can_attack: bool = true
 
 func _ready():
+	equip_random_gun()
 	super._ready()
 	walk_to_random_location()
 
@@ -31,11 +33,21 @@ func _physics_process(delta):
 		attack()
 
 
+func equip_random_gun():
+	var weapon = weapon_pool[randi_range(0, weapon_pool.size() - 1)].instantiate()
+	hand.add_child(weapon)
+
+
 func attack():
 	if not can_attack:
 		return
 	
-	hand.get_child(0).fire()
+	var weapon = hand.get_child(0)
+	
+	if weapon == null: 
+		return
+	
+	weapon.fire()
 	can_attack = false
 	attack_cooldown_timer.start(attack_cooldown)
 
