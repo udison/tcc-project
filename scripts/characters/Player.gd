@@ -58,3 +58,6 @@ func rotate_to_mouse():
 	if mouse_distance_to_player > 0 and not looking_right or mouse_distance_to_player < 0 and looking_right:
 		looking_right = !looking_right
 		flip_horizontal([main_camera])
+
+func die():
+	get_tree().reload_current_scene()

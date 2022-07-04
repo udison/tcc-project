@@ -22,7 +22,7 @@ var can_attack: bool = true
 func _ready():
 	equip_random_gun()
 	super._ready()
-	walk_to_random_location()
+	#walk_to_random_location()
 
 
 func _physics_process(delta):
@@ -53,8 +53,7 @@ func attack():
 
 
 func move():
-	if is_chasing_player:
-		walk_to_player()
+	walk_to_player()
 	
 	if motion != Vector2.ZERO:
 		velocity = motion * speed

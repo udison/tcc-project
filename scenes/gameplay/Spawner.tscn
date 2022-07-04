@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://drxbdkkg8ygra"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/Spawner.gd" id="1_to87s"]
+[ext_resource type="PackedScene" uid="uid://bsibds7lmi1em" path="res://scenes/characters/Enemy.tscn" id="2_r2ekn"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource( "1_to87s" )
+entity = ExtResource( "2_r2ekn" )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="spawn"]

@@ -45,6 +45,11 @@ _global_script_classes=[{
 "path": "res://scripts/characters/Player.gd"
 }, {
 "base": "Node2D",
+"class": &"Spawner",
+"language": &"GDScript",
+"path": "res://scripts/gameplay/Spawner.gd"
+}, {
+"base": "Node2D",
 "class": &"Weapon",
 "language": &"GDScript",
 "path": "res://scripts/combat/Weapon.gd"
@@ -57,6 +62,7 @@ _global_script_class_icons={
 "HealthBar": "",
 "Inventory": "",
 "Player": "",
+"Spawner": "",
 "Weapon": ""
 }
 

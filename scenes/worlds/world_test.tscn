@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1jy5du5d07cd"]
 
 [ext_resource type="PackedScene" uid="uid://daosa1stp7suf" path="res://scenes/characters/Player.tscn" id="1_ejp24"]
-[ext_resource type="PackedScene" uid="uid://bsibds7lmi1em" path="res://scenes/characters/Enemy.tscn" id="2_n2jf5"]
 [ext_resource type="Texture2D" uid="uid://cpk0j587c4jaj" path="res://sprites/ui/health_bar_effect.png" id="3_8dk6r"]
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="3_dawgs"]
 [ext_resource type="Texture2D" uid="uid://cl4duwx5rdhsb" path="res://sprites/ui/health_bar_front.png" id="4_g2imp"]
 [ext_resource type="Texture2D" uid="uid://cyn6he138ctn5" path="res://sprites/ui/health_bar.png" id="5_ajc2t"]
 [ext_resource type="Texture2D" uid="uid://cwtk17uxnco4i" path="res://sprites/tilesets/desert01.png" id="5_u836j"]
+[ext_resource type="PackedScene" uid="uid://drxbdkkg8ygra" path="res://scenes/gameplay/Spawner.tscn" id="7_btkat"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1278h"]
 load_path = "res://.godot/imported/health_bar_back.png-dece88b7549f827e763b6c820ea8427a.ctex"
@@ -136,21 +136,84 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-1769480, 131072, 2, -1703944, 131072, 2, -1638408, 131072, 2, -1572872, 131072, 2, -1507336, 131072, 2, -1441800, 131072, 2, -1376264, 131072, 2, -1310728, 131072, 2, -1245192, 131072, 2, -1179656, 131072, 2, -1114120, 131072, 2, -1048584, 131072, 2, -983048, 131072, 2, -917512, 131072, 2, -851976, 131072, 2, -786440, 131072, 2, -720904, 131072, 2, -655368, 131072, 2, -589832, 131072, 2, -524296, 131072, 2, -458760, 131072, 2, -393224, 131072, 2, -327688, 131072, 2, -262152, 131072, 2, -196616, 131072, 2, -131080, 131072, 2, -65544, 131072, 2, -8, 131072, 2, 65528, 131072, 2, 131064, 131072, 2, 196600, 131072, 2, 262136, 131072, 2, 327672, 131072, 2, 393208, 131072, 2, 458744, 131072, 2, 524280, 131072, 2, 589816, 131072, 2, 655352, 131072, 2, 720888, 131072, 2, 786424, 131072, 2, 851960, 131072, 2, 917496, 131072, 2, 983032, 131072, 2, 1048568, 131072, 2, 1114104, 131072, 2, 1179640, 131072, 2, 1245176, 131072, 2, 1310712, 131072, 2, 1376248, 131072, 2, 1441784, 131072, 2, 1507320, 131072, 2, 1572856, 131072, 2, 1638392, 131072, 2, -1769479, 0, 2, -1703943, 0, 2, -1638407, 0, 2, -1572871, 0, 2, -1507335, 0, 2, -1441799, 0, 2, -1376263, 0, 2, -1310727, 0, 2, -1245191, 0, 2, -1179655, 0, 2, -1114119, 0, 2, -1048583, 0, 2, -983047, 0, 2, -917511, 0, 2, -851975, 0, 2, -786439, 0, 3, -720903, 0, 4, -655367, 0, 5, 851961, 0, 1, 917497, 0, 2, 983033, 0, 2, 1048569, 0, 2, 1114105, 0, 2, 1179641, 0, 2, 1245177, 0, 2, 1310713, 0, 2, 1376249, 0, 2, 1441785, 0, 2, 1507321, 0, 2, 1572857, 0, 2, 1638393, 0, 2, -786438, 65536, 3, -720902, 65536, 4, -655366, 65536, 5, 851962, 65536, 1, -786437, 65536, 3, -720901, 65536, 4, -655365, 65536, 5, 851963, 65536, 1, -786436, 65536, 3, -720900, 65536, 4, -655364, 65536, 5, 851964, 65536, 1, -786435, 65536, 3, -720899, 65536, 4, -655363, 65536, 5, 851965, 65536, 1, -786434, 65536, 3, -720898, 65536, 4, -655362, 65536, 5, 851966, 65536, 1, -786433, 65536, 3, -720897, 65536, 4, -655361, 65536, 5, 851967, 65536, 1, -851968, 65536, 3, -786432, 65536, 4, -720896, 65536, 5, 786432, 65536, 1, -851967, 65536, 3, -786431, 65536, 4, -720895, 65536, 5, 786433, 65536, 1, -851966, 65536, 3, -786430, 65536, 4, -720894, 65536, 5, 786434, 65536, 1, -851965, 65536, 3, -786429, 65536, 4, -720893, 65536, 5, 786435, 65536, 1, -851964, 65536, 3, -786428, 65536, 4, -720892, 65536, 5, 786436, 65536, 1, -851963, 65536, 3, -786427, 65536, 4, -720891, 65536, 5, 786437, 65536, 1, -851962, 65536, 3, -786426, 65536, 4, -720890, 65536, 5, 786438, 65536, 1, -851961, 65536, 3, -786425, 65536, 4, -720889, 65536, 5, 786439, 65536, 1, -851960, 65536, 3, -786424, 65536, 4, -720888, 65536, 5, 786440, 65536, 1, -851959, 65536, 3, -786423, 65536, 4, -720887, 65536, 5, 786441, 65536, 1, -851958, 65536, 3, -786422, 65536, 4, -720886, 65536, 5, 786442, 65536, 1, -851957, 65536, 3, -786421, 65536, 4, -720885, 65536, 5, 786443, 65536, 1, -851956, 65536, 3, -786420, 65536, 4, -720884, 65536, 5, 786444, 65536, 1, -851955, 65536, 3, -786419, 65536, 4, -720883, 65536, 5, 786445, 65536, 1, -851954, 65536, 3, -786418, 65536, 4, -720882, 65536, 5, 786446, 65536, 1, -851953, 65536, 3, -786417, 65536, 4, -720881, 65536, 5, 786447, 65536, 1, -851952, 65536, 3, -786416, 65536, 4, -720880, 65536, 5, 786448, 65536, 1, -851951, 65536, 3, -786415, 65536, 4, -720879, 65536, 5, 786449, 65536, 1, -851950, 65536, 3, -786414, 65536, 4, -720878, 65536, 5, 786450, 65536, 1, -851949, 65536, 3, -786413, 65536, 4, -720877, 65536, 5, 786451, 65536, 1, -851948, 65536, 3, -786412, 65536, 4, -720876, 65536, 5, 786452, 65536, 1, -851947, 65536, 3, -786411, 65536, 4, -720875, 65536, 5, 786453, 65536, 1, -851946, 65536, 3, -786410, 65536, 4, -720874, 65536, 5, 786454, 65536, 1, -851945, 65536, 3, -786409, 65536, 4, -720873, 65536, 5, 786455, 65536, 1, -851944, 65536, 3, -786408, 65536, 4, -720872, 65536, 5, 786456, 65536, 1, -851943, 65536, 3, -786407, 65536, 4, -720871, 65536, 5, 786457, 65536, 1, -851942, 65536, 3, -786406, 65536, 4, -720870, 65536, 5, 786458, 65536, 1, -851941, 65536, 3, -786405, 65536, 4, -720869, 65536, 5, 786459, 65536, 1, -851940, 65536, 3, -786404, 65536, 4, -720868, 65536, 5, 786460, 65536, 1, -851939, 65536, 3, -786403, 65536, 4, -720867, 65536, 5, 786461, 65536, 1, -851938, 65536, 3, -786402, 65536, 4, -720866, 65536, 5, 786462, 65536, 1, -851937, 65536, 3, -786401, 65536, 4, -720865, 65536, 5, 786463, 65536, 1, -851936, 65536, 3, -786400, 65536, 4, -720864, 65536, 5, 786464, 65536, 1, -851935, 65536, 3, -786399, 65536, 4, -720863, 65536, 5, 786465, 65536, 1, -851934, 65536, 3, -786398, 65536, 4, -720862, 65536, 5, 786466, 65536, 1, -1834973, 131072, 2, -1769437, 131072, 2, -1703901, 131072, 2, -1638365, 131072, 2, -1572829, 131072, 2, -1507293, 131072, 2, -1441757, 131072, 2, -1376221, 131072, 2, -1310685, 131072, 2, -1245149, 131072, 2, -1179613, 131072, 2, -1114077, 131072, 2, -1048541, 131072, 2, -983005, 131072, 2, -917469, 131072, 2, -851933, 131072, 3, -786397, 131072, 4, -720861, 131072, 5, 786467, 131072, 1, 852003, 131072, 2, 917539, 131072, 2, 983075, 131072, 2, 1048611, 131072, 2, 1114147, 131072, 2, 1179683, 131072, 2, 1245219, 131072, 2, 1310755, 131072, 2, 1376291, 131072, 2, 1441827, 131072, 2, 1507363, 131072, 2, 1572899, 131072, 2, -1834972, 0, 2, -1769436, 0, 2, -1703900, 0, 2, -1638364, 0, 2, -1572828, 0, 2, -1507292, 0, 2, -1441756, 0, 2, -1376220, 0, 2, -1310684, 0, 2, -1245148, 0, 2, -1179612, 0, 2, -1114076, 0, 2, -1048540, 0, 2, -983004, 0, 2, -917468, 0, 2, -851932, 0, 2, -786396, 0, 2, -720860, 0, 2, -655324, 0, 2, -589788, 0, 2, -524252, 0, 2, -458716, 0, 2, -393180, 0, 2, -327644, 0, 2, -262108, 0, 2, -196572, 0, 2, -131036, 0, 2, -65500, 0, 2, 36, 0, 2, 65572, 0, 2, 131108, 0, 2, 196644, 0, 2, 262180, 0, 2, 327716, 0, 2, 393252, 0, 2, 458788, 0, 2, 524324, 0, 2, 589860, 0, 2, 655396, 0, 2, 720932, 0, 2, 786468, 0, 2, 852004, 0, 2, 917540, 0, 2, 983076, 0, 2, 1048612, 0, 2, 1114148, 0, 2, 1179684, 0, 2, 1245220, 0, 2, 1310756, 0, 2, 1376292, 0, 2, 1441828, 0, 2, 1507364, 0, 2, 1572900, 0, 2)
 
 [node name="Player" parent="." instance=ExtResource( "1_ejp24" )]
-position = Vector2(-25, 14)
+position = Vector2(228, 8)
+
+[node name="EnemySpawns" type="Node2D" parent="."]
+
+[node name="Spawner" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-68, -129)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner2" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(38, -137)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner3" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(168, -134)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner4" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(322, -135)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner5" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(453, -126)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner6" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(511, -61)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner7" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(542, 28)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner8" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(542, 111)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner9" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(506, 163)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner10" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(369, 181)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner11" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(264, 178)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner12" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(183, 176)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner13" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(93, 183)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner14" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-10, 163)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner15" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-65, 167)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner16" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-88, 104)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner17" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-80, 28)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner18" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-62, -46)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner19" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(525, -16)
+parent_node_path = NodePath("../../Enemies")
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource( "2_n2jf5" )]
-position = Vector2(346, 90)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource( "2_n2jf5" )]
-position = Vector2(334, 139)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource( "2_n2jf5" )]
-position = Vector2(315, 84)
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource( "2_n2jf5" )]
-position = Vector2(316, 107)
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource( "2_n2jf5" )]
-position = Vector2(337, 43)
