@@ -10,4 +10,8 @@ entity = ExtResource( "2_r2ekn" )
 [node name="SpawnTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="timeout" from="SpawnTimer" to="." method="spawn"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier" to="." method="_on_enter_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier" to="." method="_on_exit_screen"]

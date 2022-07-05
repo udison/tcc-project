@@ -102,8 +102,9 @@ _data = {
 "Walk": SubResource( "Animation_x5s6s" )
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vvo8k"]
-radius = 117.154
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gjib2"]
+radius = 73.0
+height = 200.0
 
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -140,7 +141,8 @@ position = Vector2(4, 3)
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource( "CircleShape2D_vvo8k" )
+rotation = 1.5708
+shape = SubResource( "CapsuleShape2D_gjib2" )
 
 [node name="PatrolTimer" type="Timer" parent="."]
 

@@ -4,7 +4,7 @@ class_name Spawner
 @export var entity: PackedScene
 @export var parent_node_path: NodePath
 @export_range(0, 60) var min_timer: float = 5
-@export_range(0, 60) var max_timer: float = 60
+@export_range(0, 60) var max_timer: float = 30
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
@@ -38,3 +38,11 @@ func spawn():
 	parent_node.add_child(instance)
 	
 	prepare()
+
+
+func _on_enter_screen():
+	spawn_timer.stop()
+
+
+func _on_exit_screen():
+	spawn_timer.start()
