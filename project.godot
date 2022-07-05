@@ -77,6 +77,7 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 InputHandler="*res://scripts/gameplay/InputHandler.gd"
 PhysicsLayers="*res://scripts/gameplay/PhysicsLayers.gd"
+Globals="*res://scripts/gameplay/Globals.gd"
 
 [display]
 

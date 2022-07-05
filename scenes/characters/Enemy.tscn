@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsibds7lmi1em"]
+[gd_scene load_steps=15 format=3 uid="uid://bsibds7lmi1em"]
 
 [ext_resource type="Script" path="res://scripts/characters/Enemy.gd" id="1_agmy0"]
 [ext_resource type="Texture2D" uid="uid://bct7px6njgyla" path="res://sprites/effects/shadow.png" id="2_0cb3y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kng20p0wxsnb" path="res://sprites/characters/enemy01.png" id="3_rukbh"]
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="4_6gn5h"]
 [ext_resource type="Texture2D" uid="uid://cayo3x625ouxp" path="res://sprites/ui/enemies_health_bar.png" id="4_kgwwh"]
+[ext_resource type="PackedScene" uid="uid://drh5us0uygoub" path="res://scenes/weapons/Winchester.tscn" id="4_mcdfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu03s"]
 size = Vector2(14, 18)
@@ -103,7 +104,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gjib2"]
-radius = 73.0
+radius = 68.0
 height = 200.0
 
 [node name="Enemy" type="CharacterBody2D"]
@@ -113,7 +114,7 @@ collision_mask = 7
 script = ExtResource( "1_agmy0" )
 speed = 25.0
 stop_distance = 75.0
-weapon_pool = [ExtResource( "2_o56oh" ), ExtResource( "3_e16ff" )]
+weapon_pool = [ExtResource( "2_o56oh" ), ExtResource( "3_e16ff" ), ExtResource( "4_mcdfx" )]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 12)

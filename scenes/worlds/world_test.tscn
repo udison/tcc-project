@@ -1,15 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1jy5du5d07cd"]
+[gd_scene load_steps=8 format=3 uid="uid://d1jy5du5d07cd"]
 
+[ext_resource type="Script" path="res://scripts/gameplay/GameHandler.gd" id="1_2a5gw"]
+[ext_resource type="PackedScene" uid="uid://etbxj1xo075s" path="res://scenes/ui/HUD.tscn" id="1_2gdef"]
 [ext_resource type="PackedScene" uid="uid://daosa1stp7suf" path="res://scenes/characters/Player.tscn" id="1_ejp24"]
-[ext_resource type="Texture2D" uid="uid://cpk0j587c4jaj" path="res://sprites/ui/health_bar_effect.png" id="3_8dk6r"]
-[ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="3_dawgs"]
-[ext_resource type="Texture2D" uid="uid://cl4duwx5rdhsb" path="res://sprites/ui/health_bar_front.png" id="4_g2imp"]
-[ext_resource type="Texture2D" uid="uid://cyn6he138ctn5" path="res://sprites/ui/health_bar.png" id="5_ajc2t"]
 [ext_resource type="Texture2D" uid="uid://cwtk17uxnco4i" path="res://sprites/tilesets/desert01.png" id="5_u836j"]
 [ext_resource type="PackedScene" uid="uid://drxbdkkg8ygra" path="res://scenes/gameplay/Spawner.tscn" id="7_btkat"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1278h"]
-load_path = "res://.godot/imported/health_bar_back.png-dece88b7549f827e763b6c820ea8427a.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fks06"]
 texture = ExtResource( "5_u836j" )
@@ -91,35 +86,9 @@ physics_layer_0/collision_mask = 3
 sources/0 = SubResource( "TileSetAtlasSource_fks06" )
 
 [node name="World" type="Node2D"]
+script = ExtResource( "1_2a5gw" )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
-
-[node name="HealthBar" type="Control" parent="HUD"]
-offset_right = 48.0
-offset_bottom = 15.0
-script = ExtResource( "3_dawgs" )
-
-[node name="Effect" type="TextureProgressBar" parent="HUD/HealthBar"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 48.0
-offset_bottom = 15.0
-value = 100.0
-texture_under = SubResource( "CompressedTexture2D_1278h" )
-texture_progress = ExtResource( "3_8dk6r" )
-texture_progress_offset = Vector2(10, 2)
-
-[node name="Bar" type="TextureProgressBar" parent="HUD/HealthBar"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 48.0
-offset_bottom = 15.0
-value = 100.0
-texture_over = ExtResource( "4_g2imp" )
-texture_progress = ExtResource( "5_ajc2t" )
-texture_progress_offset = Vector2(10, 2)
+[node name="HUD" parent="." instance=ExtResource( "1_2gdef" )]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( "TileSet_3sb8p" )
@@ -140,80 +109,80 @@ position = Vector2(228, 8)
 
 [node name="EnemySpawns" type="Node2D" parent="."]
 
-[node name="Spawner" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(-68, -129)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner2" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(38, -137)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner3" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(168, -134)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner4" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(322, -135)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner5" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(453, -126)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner6" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(511, -61)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner7" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(542, 28)
-parent_node_path = NodePath("../../Enemies")
-
 [node name="Spawner8" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(542, 111)
+position = Vector2(0, -146)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Spawner9" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(506, 163)
+position = Vector2(80, -145)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Spawner10" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(369, 181)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner11" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(264, 178)
+position = Vector2(-95, -42)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Spawner12" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(183, 176)
+position = Vector2(-47, 168)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Spawner13" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(93, 183)
-parent_node_path = NodePath("../../Enemies")
-
-[node name="Spawner14" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(-10, 163)
+position = Vector2(400, 179)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Spawner15" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(-65, 167)
+position = Vector2(550, -143)
 parent_node_path = NodePath("../../Enemies")
 
-[node name="Spawner16" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(-88, 104)
+[node name="Spawner11" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(142, -146)
 parent_node_path = NodePath("../../Enemies")
 
-[node name="Spawner17" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(-80, 28)
+[node name="Spawner14" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(288, -146)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Spawner18" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(-62, -46)
+position = Vector2(440, -148)
 parent_node_path = NodePath("../../Enemies")
 
-[node name="Spawner19" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
-position = Vector2(525, -16)
+[node name="Spawner26" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(32, 180)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner29" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(182, 174)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner36" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(322, 176)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner48" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(454, 173)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner2" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-96, -97)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner4" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-96, 28)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner6" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(-96, 138)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner20" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(536, -97)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner22" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(536, 28)
+parent_node_path = NodePath("../../Enemies")
+
+[node name="Spawner24" parent="EnemySpawns" instance=ExtResource( "7_btkat" )]
+position = Vector2(536, 138)
 parent_node_path = NodePath("../../Enemies")
 
 [node name="Enemies" type="Node2D" parent="."]

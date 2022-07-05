@@ -30,7 +30,7 @@ func _physics_process(delta):
 	
 	if is_chasing_player:
 		look_to_player()
-		attack()
+		#attack()
 
 
 func equip_random_gun():

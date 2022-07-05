@@ -4,9 +4,13 @@ class_name Player
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var hand: Node2D = $Hand
 @onready var main_camera: Camera2D = $MainCamera
+@onready var Globals: Globals = get_tree().get_root().get_node('Globals')
+
+var is_dead: bool = false
 
 func _ready():
-	health_bar = get_tree().current_scene.get_node('HUD').get_node('HealthBar')
+	Globals.player = self
+	health_bar = get_tree().current_scene.get_node('HUD/Screen/HealthBar')
 	
 	if health_bar != null:
 		health_bar.init(self)
@@ -60,4 +64,5 @@ func rotate_to_mouse():
 		flip_horizontal([main_camera])
 
 func die():
+	is_dead = true
 	get_tree().reload_current_scene()

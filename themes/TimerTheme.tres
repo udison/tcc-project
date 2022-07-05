@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://tvkv6nmkwa6j"]
+
+[ext_resource type="Font" uid="uid://bxxkkmiumuao5" path="res://fonts/ka1.ttf" id="1_rn80d"]
+
+[resource]
+/fonts/Default = ExtResource( "1_rn80d" )
