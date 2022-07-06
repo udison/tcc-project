@@ -14,7 +14,8 @@ class_name Enemy
 @onready var patrol_timer: Timer = $PatrolTimer
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 
-@onready var player = get_tree().current_scene.get_node('Player')
+@onready var game_handler = get_tree().current_scene
+@onready var player = game_handler.get_node('Player')
 
 var is_chasing_player: bool = false
 var can_attack: bool = true
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	
 	if is_chasing_player:
 		look_to_player()
-		#attack()
+		attack()
 
 
 func equip_random_gun():
@@ -127,3 +128,8 @@ func stop_chase_player():
 
 func _on_attack_cooldown_timer_timeout():
 	can_attack = true
+
+
+func die():
+	game_handler.enemies_killed += 1
+	super.die()

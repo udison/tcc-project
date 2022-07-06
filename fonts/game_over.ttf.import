@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontData"
-uid="uid://bxxkkmiumuao5"
-path="res://.godot/imported/ka1.ttf-279588e16c82672f25e0673d2d4d61b3.fontdata"
+uid="uid://qtdduei3u23j"
+path="res://.godot/imported/game_over.ttf-e66b5c07ccc6d0ee7a15996aeb04f254.fontdata"
 
 [deps]
 
-source_file="res://fonts/ka1.ttf"
-dest_files=["res://.godot/imported/ka1.ttf-279588e16c82672f25e0673d2d4d61b3.fontdata"]
+source_file="res://fonts/game_over.ttf"
+dest_files=["res://.godot/imported/game_over.ttf-e66b5c07ccc6d0ee7a15996aeb04f254.fontdata"]
 
 [params]
 
@@ -18,11 +18,11 @@ multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 force_autohinter=false
-hinting=0
+hinting=1
 subpixel_positioning=1
 embolden=0.0
 transform=Transform2D(1, 0, 0, 1, 0, 0)
-oversampling=0.0
+oversampling=5.3
 compress=false
 opentype_feature_overrides={}
 preload/char_ranges=PackedStringArray()

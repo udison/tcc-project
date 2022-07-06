@@ -1,60 +1,145 @@
-[gd_scene load_steps=7 format=3 uid="uid://etbxj1xo075s"]
+[gd_scene load_steps=12 format=3 uid="uid://etbxj1xo075s"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="1_vpn0a"]
 [ext_resource type="Texture2D" uid="uid://cpk0j587c4jaj" path="res://sprites/ui/health_bar_effect.png" id="2_1ibff"]
 [ext_resource type="Texture2D" uid="uid://cl4duwx5rdhsb" path="res://sprites/ui/health_bar_front.png" id="3_43f6u"]
 [ext_resource type="Texture2D" uid="uid://cyn6he138ctn5" path="res://sprites/ui/health_bar.png" id="4_amb73"]
-[ext_resource type="Theme" uid="uid://tvkv6nmkwa6j" path="res://themes/TimerTheme.tres" id="5_xnfyl"]
+[ext_resource type="FontData" uid="uid://qtdduei3u23j" path="res://fonts/game_over.ttf" id="5_c8tf1"]
+[ext_resource type="Font" uid="uid://dsqh3enkdukca" path="res://fonts/ka1.tres" id="5_na7x6"]
+[ext_resource type="Texture2D" uid="uid://gxsggasetrh6" path="res://sprites/ui/skull.png" id="6_ujg23"]
+[ext_resource type="Texture2D" uid="uid://c0ygynhhbecvc" path="res://sprites/ui/watch.png" id="7_472a4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1278h"]
 load_path = "res://.godot/imported/health_bar_back.png-dece88b7549f827e763b6c820ea8427a.ctex"
 
+[sub_resource type="Font" id="Font_h6aff"]
+data/0 = ExtResource( "5_c8tf1" )
+
+[sub_resource type="StyleBox" id="StyleBox_khi8h"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 6.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = 7.0
+
 [node name="HUD" type="CanvasLayer"]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
 
-[node name="Screen" type="Control" parent="."]
-offset_right = 341.0
-offset_bottom = 192.0
+[node name="GameOver" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HealthBar" type="Control" parent="Screen"]
-offset_right = 48.0
-offset_bottom = 15.0
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.266667)
+
+[node name="Header" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = -3.0
+offset_bottom = 61.0
+grow_horizontal = 2
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="HealthBar" type="Control" parent="Header"]
+offset_right = 380.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
 script = ExtResource( "1_vpn0a" )
 
-[node name="Effect" type="TextureProgressBar" parent="Screen/HealthBar"]
+[node name="Effect" type="TextureProgressBar" parent="Header/HealthBar"]
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 48.0
 offset_bottom = 15.0
+scale = Vector2(4, 4)
 value = 100.0
 texture_under = SubResource( "CompressedTexture2D_1278h" )
 texture_progress = ExtResource( "2_1ibff" )
 texture_progress_offset = Vector2(10, 2)
 
-[node name="Bar" type="TextureProgressBar" parent="Screen/HealthBar"]
+[node name="Bar" type="TextureProgressBar" parent="Header/HealthBar"]
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 48.0
 offset_bottom = 15.0
+scale = Vector2(4, 4)
 value = 100.0
 texture_over = ExtResource( "3_43f6u" )
 texture_progress = ExtResource( "4_amb73" )
 texture_progress_offset = Vector2(10, 2)
 
-[node name="Header" type="VBoxContainer" parent="Screen"]
-anchor_right = 1.0
-offset_bottom = 23.0
-
-[node name="Timer" type="Label" parent="Screen/Header"]
-offset_right = 341.0
-offset_bottom = 23.0
-grow_horizontal = 2
+[node name="KillCounter" type="Control" parent="Header"]
+offset_left = 384.0
+offset_right = 1360.0
+offset_bottom = 55.0
 size_flags_horizontal = 3
-theme = ExtResource( "5_xnfyl" )
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 14
-text = "00:00.0000"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_stretch_ratio = 2.56
+
+[node name="HBox" type="HBoxContainer" parent="Header/KillCounter"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -6.5
+offset_right = -127.0
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(23, 7)
+alignment = 2
 metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="Label" type="Label" parent="Header/KillCounter/HBox"]
+offset_left = 43.0
+offset_right = 51.0
+offset_bottom = 14.0
+theme_type_variation = &"KillCounter"
+theme_override_fonts/font = ExtResource( "5_na7x6" )
+theme_override_font_sizes/font_size = 9
+text = "0"
+horizontal_alignment = 2
+
+[node name="Skull" type="TextureRect" parent="Header/KillCounter/HBox"]
+offset_left = 55.0
+offset_right = 64.0
+offset_bottom = 14.0
+texture = ExtResource( "6_ujg23" )
+stretch_mode = 5
+
+[node name="Timer" type="HBoxContainer" parent="."]
+offset_left = 10.0
+offset_top = 59.0
+offset_right = 324.0
+offset_bottom = 113.0
+
+[node name="Watch" type="TextureRect" parent="Timer"]
+offset_right = 35.0
+offset_bottom = 61.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.13
+texture = ExtResource( "7_472a4" )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Timer"]
+offset_left = 39.0
+offset_right = 314.0
+offset_bottom = 61.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource( "Font_h6aff" )
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource( "StyleBox_khi8h" )
+text = "00:00.0000"
+vertical_alignment = 1
