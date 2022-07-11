@@ -65,4 +65,3 @@ func rotate_to_mouse():
 
 func die():
 	is_dead = true
-	get_tree().reload_current_scene()

@@ -1,19 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://etbxj1xo075s"]
+[gd_scene load_steps=13 format=3 uid="uid://etbxj1xo075s"]
 
+[ext_resource type="Font" uid="uid://dorn23ccjus54" path="res://fonts/gameover.tres" id="1_vfm2e"]
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="1_vpn0a"]
 [ext_resource type="Texture2D" uid="uid://cpk0j587c4jaj" path="res://sprites/ui/health_bar_effect.png" id="2_1ibff"]
+[ext_resource type="Texture2D" uid="uid://bx0pp3t3qyup" path="res://sprites/ui/retry.png" id="2_creyx"]
 [ext_resource type="Texture2D" uid="uid://cl4duwx5rdhsb" path="res://sprites/ui/health_bar_front.png" id="3_43f6u"]
+[ext_resource type="Script" path="res://scripts/ui/RetryButton.gd" id="3_otcse"]
 [ext_resource type="Texture2D" uid="uid://cyn6he138ctn5" path="res://sprites/ui/health_bar.png" id="4_amb73"]
-[ext_resource type="FontData" uid="uid://qtdduei3u23j" path="res://fonts/game_over.ttf" id="5_c8tf1"]
 [ext_resource type="Font" uid="uid://dsqh3enkdukca" path="res://fonts/ka1.tres" id="5_na7x6"]
 [ext_resource type="Texture2D" uid="uid://gxsggasetrh6" path="res://sprites/ui/skull.png" id="6_ujg23"]
 [ext_resource type="Texture2D" uid="uid://c0ygynhhbecvc" path="res://sprites/ui/watch.png" id="7_472a4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1278h"]
 load_path = "res://.godot/imported/health_bar_back.png-dece88b7549f827e763b6c820ea8427a.ctex"
-
-[sub_resource type="Font" id="Font_h6aff"]
-data/0 = ExtResource( "5_c8tf1" )
 
 [sub_resource type="StyleBox" id="StyleBox_khi8h"]
 resource_local_to_scene = false
@@ -26,7 +25,6 @@ content_margin_bottom = 7.0
 [node name="HUD" type="CanvasLayer"]
 
 [node name="GameOver" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -36,6 +34,39 @@ grow_vertical = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.266667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -246.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Game Over" type="Label" parent="GameOver/VBoxContainer"]
+offset_right = 1366.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource( "1_vfm2e" )
+theme_override_font_sizes/font_size = 230
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/VBoxContainer"]
+offset_top = 137.0
+offset_right = 1366.0
+offset_bottom = 181.0
+alignment = 1
+
+[node name="TextureButton" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+offset_left = 636.0
+offset_right = 729.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 26
+text = "Retry"
+icon = ExtResource( "2_creyx" )
+script = ExtResource( "3_otcse" )
 
 [node name="Header" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -138,8 +169,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 18
-theme_override_fonts/font = SubResource( "Font_h6aff" )
+theme_override_fonts/font = ExtResource( "1_vfm2e" )
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource( "StyleBox_khi8h" )
 text = "00:00.0000"
 vertical_alignment = 1
+
+[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/TextureButton" to="GameOver/VBoxContainer/HBoxContainer/TextureButton" method="retry"]

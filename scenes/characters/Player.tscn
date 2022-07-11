@@ -15,10 +15,8 @@ size = Vector2(8, 18)
 radius = 3.0
 height = 14.0
 
-[sub_resource type="Animation" id="Animation_yo517"]
-resource_name = "Idle"
-length = 0.4
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_pric4"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,10 +24,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,8 +71,10 @@ tracks/1/keys = {
 "values": [Vector2(4, 3), Vector2(5, 4), Vector2(4, 3), Vector2(3, 4)]
 }
 
-[sub_resource type="Animation" id="Animation_pric4"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_yo517"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,10 +82,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
