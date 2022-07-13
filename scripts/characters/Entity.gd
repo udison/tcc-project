@@ -48,4 +48,7 @@ func damage_blink_animation():
 
 
 func reset_modulate():
+	if sprite == null:
+		return
+	
 	sprite.modulate = Color.WHITE

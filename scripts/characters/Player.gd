@@ -10,7 +10,7 @@ var is_dead: bool = false
 
 func _ready():
 	Globals.player = self
-	health_bar = get_tree().current_scene.get_node('HUD/Screen/HealthBar')
+	health_bar = get_tree().current_scene.get_node('HUD/Header/HealthBar')
 	
 	if health_bar != null:
 		health_bar.init(self)
@@ -42,6 +42,9 @@ func input_handler():
 
 
 func move():
+	if is_dead:
+		return
+	
 	if motion != Vector2.ZERO:
 		velocity = motion * speed
 		anim_player.play('Walk')
@@ -54,6 +57,9 @@ func move():
 
 
 func rotate_to_mouse():
+	if is_dead:
+		return
+	
 	var mouse_x = get_global_mouse_position().x
 	var mouse_distance_to_player = mouse_x - global_position.x
 	
@@ -65,3 +71,8 @@ func rotate_to_mouse():
 
 func die():
 	is_dead = true
+	sprite.queue_free()
+	hand.queue_free()
+	$Hitbox.queue_free()
+	$Shadow.queue_free()
+	Globals.game_over.show()

@@ -11,5 +11,4 @@ func _process(delta):
 	pass
 
 
-func retry():
-	get_tree().reload_current_scene()
+

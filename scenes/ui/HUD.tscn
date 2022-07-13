@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://etbxj1xo075s"]
+[gd_scene load_steps=14 format=3 uid="uid://etbxj1xo075s"]
 
+[ext_resource type="Script" path="res://scripts/ui/GameOver.gd" id="1_ro4e2"]
 [ext_resource type="Font" uid="uid://dorn23ccjus54" path="res://fonts/gameover.tres" id="1_vfm2e"]
 [ext_resource type="Script" path="res://scripts/gameplay/HealthBar.gd" id="1_vpn0a"]
 [ext_resource type="Texture2D" uid="uid://cpk0j587c4jaj" path="res://sprites/ui/health_bar_effect.png" id="2_1ibff"]
 [ext_resource type="Texture2D" uid="uid://bx0pp3t3qyup" path="res://sprites/ui/retry.png" id="2_creyx"]
 [ext_resource type="Texture2D" uid="uid://cl4duwx5rdhsb" path="res://sprites/ui/health_bar_front.png" id="3_43f6u"]
-[ext_resource type="Script" path="res://scripts/ui/RetryButton.gd" id="3_otcse"]
 [ext_resource type="Texture2D" uid="uid://cyn6he138ctn5" path="res://sprites/ui/health_bar.png" id="4_amb73"]
 [ext_resource type="Font" uid="uid://dsqh3enkdukca" path="res://fonts/ka1.tres" id="5_na7x6"]
+[ext_resource type="Texture2D" uid="uid://i74efjqci36i" path="res://sprites/ui/submit.png" id="5_nfs1i"]
 [ext_resource type="Texture2D" uid="uid://gxsggasetrh6" path="res://sprites/ui/skull.png" id="6_ujg23"]
 [ext_resource type="Texture2D" uid="uid://c0ygynhhbecvc" path="res://sprites/ui/watch.png" id="7_472a4"]
 
@@ -29,6 +30,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource( "1_ro4e2" )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="GameOver"]
 
 [node name="ColorRect" type="ColorRect" parent="GameOver"]
 anchor_right = 1.0
@@ -59,14 +63,22 @@ offset_right = 1366.0
 offset_bottom = 181.0
 alignment = 1
 
-[node name="TextureButton" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+[node name="RetryButton" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
 offset_left = 636.0
 offset_right = 729.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 26
 text = "Retry"
 icon = ExtResource( "2_creyx" )
-script = ExtResource( "3_otcse" )
+
+[node name="SubmitButton" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+visible = false
+offset_left = 636.0
+offset_right = 827.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 26
+text = "Submit Score"
+icon = ExtResource( "5_nfs1i" )
 
 [node name="Header" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -175,4 +187,8 @@ theme_override_styles/normal = SubResource( "StyleBox_khi8h" )
 text = "00:00.0000"
 vertical_alignment = 1
 
-[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/TextureButton" to="GameOver/VBoxContainer/HBoxContainer/TextureButton" method="retry"]
+[connection signal="request_completed" from="GameOver/HTTPRequest" to="GameOver" method="on_submit_complete"]
+[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/RetryButton" to="GameOver" method="retry"]
+[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/RetryButton" to="GameOver/VBoxContainer/HBoxContainer/RetryButton" method="retry"]
+[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/SubmitButton" to="GameOver" method="submit"]
+[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/SubmitButton" to="GameOver/VBoxContainer/HBoxContainer/SubmitButton" method="submit"]

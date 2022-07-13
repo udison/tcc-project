@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/characters/Entity.gd"
 }, {
+"base": "Control",
+"class": &"GameOver",
+"language": &"GDScript",
+"path": "res://scripts/ui/GameOver.gd"
+}, {
 "base": "Node2D",
 "class": &"Hand",
 "language": &"GDScript",
@@ -58,6 +63,7 @@ _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "Entity": "",
+"GameOver": "",
 "Hand": "",
 "HealthBar": "",
 "Inventory": "",
@@ -78,6 +84,7 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 InputHandler="*res://scripts/gameplay/InputHandler.gd"
 PhysicsLayers="*res://scripts/gameplay/PhysicsLayers.gd"
 Globals="*res://scripts/gameplay/Globals.gd"
+Firebase="*res://scripts/network/Firebase.gd"
 
 [display]
 
