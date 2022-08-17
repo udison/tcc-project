@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://etbxj1xo075s"]
+[gd_scene load_steps=16 format=3 uid="uid://etbxj1xo075s"]
 
 [ext_resource type="Script" path="res://scripts/ui/GameOver.gd" id="1_ro4e2"]
 [ext_resource type="Font" uid="uid://dorn23ccjus54" path="res://fonts/gameover.tres" id="1_vfm2e"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://i74efjqci36i" path="res://sprites/ui/submit.png" id="5_nfs1i"]
 [ext_resource type="Texture2D" uid="uid://gxsggasetrh6" path="res://sprites/ui/skull.png" id="6_ujg23"]
 [ext_resource type="Texture2D" uid="uid://c0ygynhhbecvc" path="res://sprites/ui/watch.png" id="7_472a4"]
+[ext_resource type="Script" path="res://scripts/gameplay/BulletCounter.gd" id="12_d2ymk"]
+[ext_resource type="Texture2D" uid="uid://dbcge5lc4211w" path="res://sprites/ui/bullet.png" id="12_rlrja"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1278h"]
 load_path = "res://.godot/imported/health_bar_back.png-dece88b7549f827e763b6c820ea8427a.ctex"
@@ -186,6 +188,47 @@ theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource( "StyleBox_khi8h" )
 text = "00:00.0000"
 vertical_alignment = 1
+
+[node name="Footer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BulletCounter" type="Control" parent="Footer"]
+script = ExtResource( "12_d2ymk" )
+
+[node name="Bullet" type="TextureRect" parent="Footer/BulletCounter"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -60.0
+offset_right = 48.0
+offset_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.13
+texture = ExtResource( "12_rlrja" )
+stretch_mode = 5
+metadata/_edit_layout_mode = 1
+
+[node name="Counter" type="Label" parent="Footer/BulletCounter"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -60.0
+offset_right = 330.0
+offset_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource( "1_vfm2e" )
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource( "StyleBox_khi8h" )
+text = "--/--"
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
 
 [connection signal="request_completed" from="GameOver/HTTPRequest" to="GameOver" method="on_submit_complete"]
 [connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/RetryButton" to="GameOver" method="retry"]

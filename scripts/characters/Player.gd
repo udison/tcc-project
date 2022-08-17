@@ -76,3 +76,8 @@ func die():
 	$Hitbox.queue_free()
 	$Shadow.queue_free()
 	Globals.game_over.show()
+
+
+func get_player_hand():
+	print(hand)
+	return hand

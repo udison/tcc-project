@@ -34,7 +34,7 @@ func prepare():
 	var spawn_time: float = randf_range(min_timer, max_timer)
 	
 	spawn_timer.start(spawn_time)
-	print('New entity spawning in ' + str(spawn_time) + ' second(s)')
+	# print('New entity spawning in ' + str(spawn_time) + ' second(s)')
 
 
 func spawn():
